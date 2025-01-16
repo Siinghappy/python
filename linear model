@@ -1,1 +1,36 @@
+1. for x_val, y_val in zip(x, y) ：将list x, y 打包为元祖列表:[(2.0, 4.0), (4.0, 8.0), (6.0, 12.0), (8.0, 16.0)]
+2.数组长度：len（list）
 
+#1.初始条件：定义x，y数据组，导入数据库，定义初始参数
+import numpy as np
+import matplotlib.pyplot as plt
+x = [2.0, 4.0, 6.0, 8.0]
+y = [4.0, 8.0, 12.0, 16.0]
+
+#2.定义前向传播模型函数，和损失函数
+def forward(x):
+    return x*w
+def loss(x, y):
+    y_pred = forward(x)
+    return (y_pred-y)*(y_pred-y)
+
+#3.计算MSE
+w_list = []
+mse_list = []
+for w in np.arange(0.0, 4.1, 0.1): # ！！这里的w给了全局变量，如果w变了，forward函数也会跟着改变
+    l_sum = 0
+    y_pred = []
+    for x_val, y_val in zip(x, y):
+        y_pred.append(forward(x_val))
+        l = loss(x_val, y_val)
+        l_sum += l
+    mse = l_sum/len(x) #？求数组长度的是什么？？ 
+    mse_list.append(mse)
+    w_list.append(w)
+    print('w={}, x={}, y={},y_pred={} mse={}'.format(w,x,y,y_pred,mse))    
+
+#4.画图
+plt.plot(w_list, mse_list)
+plt.xlabel('w')
+plt.ylabel('mse')
+plt.show()
