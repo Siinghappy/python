@@ -1,3 +1,5 @@
+# https://www.youtube.com/watch?v=b4Vyma9wPHo&list=PLlMkM4tgfjnJ3I-dbhO9JTw7gNty6o_2m&index=3
+
 1. for x_val, y_val in zip(x, y) ：将list x, y 打包为元祖列表:[(2.0, 4.0), (4.0, 8.0), (6.0, 12.0), (8.0, 16.0)]
 2.数组长度：len（list）
 
